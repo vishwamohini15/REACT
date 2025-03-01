@@ -1,8 +1,11 @@
 "use client"
 import React, { useState } from 'react'
+import Todo from './TodoWithEdit/Todo';
 
 
 const page = () => {
+/*
+
   const[title, settitle]=useState("")
   const[desc, setdesc]=useState("")
   const [mainTask, setmainTask] = useState([])
@@ -19,7 +22,7 @@ const page = () => {
     
   }
 
-const deleteHandler5=(i)=>{
+const deleteHandler=(i)=>{
  let copytask=[...mainTask]
  copytask.splice(i,1)
  setmainTask(copytask)
@@ -59,6 +62,19 @@ if (mainTask.length>0) {
     </div>
     </>
   )
-}
 
-export default page
+*/
+
+
+
+
+
+
+return(
+  <div className='h-screen max-w-full bg-green-500 p-10'>
+  <Todo/>
+
+  </div>
+)
+}
+export default page;
