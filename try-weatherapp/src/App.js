@@ -1,10 +1,12 @@
 import React from 'react'
-import Temp from './component/Temp'
+// import Temp from './component/Temp'
+import TryTemp from './tryITmyOwn/TryTemp'
 
 const App = () => {
   return (
     <div>
-      <Temp/>
+      {/* <Temp/> */}
+      <TryTemp/>
     </div>
   )
 }
