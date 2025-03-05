@@ -68,7 +68,7 @@ const Todo = () => {
      }, [item])
      
   return (
-    <div className=' main-div bg-red-700 flex  items-center gap-8 flex-col h-full'>
+    <div className=' main-div bg-red-700 flex  items-center gap-8 flex-col h-full rounded-xl'>
       <div className="child-div bg-yellow-400 p-3 mt-10 flex justify-center items-center gap-3 flex-col">
           <figure>
           <figcaption>Add your list here 💎✴</figcaption>
