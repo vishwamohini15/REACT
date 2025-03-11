@@ -1,7 +1,7 @@
 import React from 'react'
 import './Video.css'
 
-const Video = ({title,channel="muskan",views,time,verifydd,id}) => {
+const Video = ({title,channel="muskan",views,time,verifydd,id, children}) => {
   // let chanelJSX
   // if (verifyd) {
   // chanelJSX=<div className='channel'>{channel}✔💚❤❌</div>
@@ -11,8 +11,8 @@ const Video = ({title,channel="muskan",views,time,verifydd,id}) => {
   // }
 
   return (
-     <>
-     <div className="containermj">
+     <div className="card">
+     <div >
      <div>
        <img
       src={`https://picsum.photos/id/${id}/200/300`}
@@ -25,7 +25,10 @@ const Video = ({title,channel="muskan",views,time,verifydd,id}) => {
 
      </div>
 
-    </>
+<div>
+  {children}
+</div>
+    </div>
   )
 }
 
