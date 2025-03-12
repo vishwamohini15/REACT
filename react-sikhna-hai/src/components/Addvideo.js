@@ -1,49 +1,33 @@
 import React, { useState } from 'react'
 
-const Addvideo = ({addVideos}) => {
-     const [video, setvideo] = useState({
-               views:"10k",
-                 channel:"vishwamohini",
-                 verifydd:true
-     })
-     function handelSubmit(e){
-          // e.prevantdDefault()
+let initialstate={
+     time:"1 year ago",
+     channel:"vishwamohini",
+     verifid:true,
+     title:'',
+     views:''
+}
+const Addvideo = ({addvideo}) => {
+     const [video, setvideo] = useState(initialstate)
+
+     function handelsubmit(e){
           e.preventDefault()
-          addVideos(video)
-          console.log(video);
-          
+          addvideo(video)
+          setvideo(initialstate)
      }
 
-     function handelChange(e){
-          // console.log(e.target.value,e.target.name);
-setvideo({...video,
-     [e.target.name]:e.target.value
-
-})
-// console.log(video);
-
+     const handelchange=(e)=>{
+          console.log(e.target.name,e.target.value);
+          setvideo({...video,
+               [e.target.name]:e.target.value
+          })
      }
   return (
-    <form >
-     <input className='inpuu' name='title' onChange={handelChange} type="text" placeholder='Title'/> 
-     <br />{video.title}
-     <input  className='inpuu' name='views'  onChange={handelChange}  type="text" placeholder='Views'/>
-      <br />
-     <button  className='plybtn' 
-     onClick={handelSubmit}
-     // onClick={()=>{
-//   setVideos( [...videos,{
-//     id:videos.length+1,
-//     title:"this is DEMO-js",
-//      views:"10k",
-//       time:"4 year ago",
-//        channel:"vishwamohini"
-//   },])
-// }}
-
->
-add</button>
-    </form>
+     <form >
+          <input type="text" name='title' placeholder='title' className='inpuu' onChange={handelchange}  value={video.title}/>
+          <input type="text" name='views' placeholder='views' className='inpuu' onChange={handelchange} value={video.views}/>
+          <button className='plybtn'  onClick={handelsubmit}>ADDvideo</button>
+     </form>
   )
 }
 
