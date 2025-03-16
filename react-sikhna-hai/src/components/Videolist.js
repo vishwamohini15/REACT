@@ -2,7 +2,7 @@ import React from 'react'
 import Video from './Video'
 import Playbutton from './Playbutton'
 
-const Videolist = ({videos}) => {
+const Videolist = ({videos, deletevideo,editvideo}) => {
   return (
      <div className='container' >
 
@@ -13,7 +13,10 @@ const Videolist = ({videos}) => {
          views={video.views}
           time={video.time}
           channel={video.channel}
-          verifydd={video.verifid} key={video.id}>
+          verifydd={video.verifid} key={video.id}
+          deletevideo={deletevideo}
+          editvideo={editvideo}
+          >
            
            <Playbutton
               onclick={()=>console.log("playing-hua", video.title)}

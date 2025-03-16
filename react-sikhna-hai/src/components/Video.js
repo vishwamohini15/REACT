@@ -1,7 +1,7 @@
 import React from 'react'
 import './Video.css'
 
-const Video = ({title,channel="muskan",views,time,verifydd,id, children}) => {
+const Video = ({title,channel="muskan",views,time,verifydd,id, children,deletevideo,editvideo}) => {
   // let chanelJSX
   // if (verifyd) {
   // chanelJSX=<div className='channel'>{channel}✔💚❤❌</div>
@@ -12,6 +12,9 @@ const Video = ({title,channel="muskan",views,time,verifydd,id, children}) => {
 
   return (
      <div className="card">
+      <button  className='close' onClick={()=>deletevideo(id)}>X</button>
+      <button  className='edit' onClick={()=>editvideo(id)}>Edit</button>
+
      <div >
      <div>
        <img

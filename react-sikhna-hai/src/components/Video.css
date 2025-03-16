@@ -46,3 +46,18 @@ body{
      padding: 10px;
      margin-right: 13px;
 }
+
+.close{
+     width: 40px;
+     padding: 10px;
+     background-color: red;
+     color: white;
+     border-radius: 20px;
+}
+
+.edit{
+     left: 0;
+     background-color: green;
+     color: white;
+     width: 40px;
+}
