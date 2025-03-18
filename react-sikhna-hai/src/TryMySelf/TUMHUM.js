@@ -18,11 +18,15 @@ const TUMHUM = () => {
           setInputvlu("")
      }
 
-     const deletehojaa=(induux)=>{
-          let dumdum=addData.filter((fill)=>{
-               return fill.id !==induux
+     const deletehojaa=(index)=>{
+          const updateditem=addData.filter((currelem)=>{
+               return currelem.id !== index;
           })
-          setAddData(dumdum)
+          setAddData(updateditem);
+     }
+
+     const remove=()=>{
+          setAddData([])
      }
      
   return (
@@ -41,12 +45,13 @@ const TUMHUM = () => {
                       <h3>{item.name}</h3>
           <div className="edit-del">
                <h2>🌞</h2>
-               <h2 onClick={deletehojaa(item.id)}>🛑</h2>
+               <h2 onClick={()=>deletehojaa(item.id)}>🛑</h2>
           </div>
                </div>
           )
         })}
       </div>
+      <div className='remo' onClick={remove}>Remove-All</div>
     </div>
   )
 }
