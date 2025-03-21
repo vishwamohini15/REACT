@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import VideoDispatchContext from '../context/VideoDispatchCntx'
 
 let initialstate={
      time:"1 year ago",
@@ -7,9 +8,9 @@ let initialstate={
      title:'',
      views:''
 }
-const Addvideo = ({dispatch, editablevideo}) => {
+const Addvideo = ({ editablevideo}) => {
      const [video, setvideo] = useState(initialstate)
-
+const dispatch=useContext(VideoDispatchContext)
      function handelsubmit(e){
           e.preventDefault()
           if (editablevideo) {

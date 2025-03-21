@@ -6,11 +6,14 @@ import videosDB from './data/Data';
 import Addvideo from './components/Addvideo';
 import Videolist from './components/Videolist';
 import TheamContext from './context/Theamcontex';
+import VideosContext from './context/VideoContext';
+import VideoDispatchContext from './context/VideoDispatchCntx';
 // import { type } from '@testing-library/user-event/dist/type';
 
 
 function App() {
   const [editablevideo, setEditablevideo] = useState(null)
+  const[mode, setmode]=useState('dark')
 
   function videoReducer(videos, action){
     switch(action.type){
@@ -35,8 +38,8 @@ function App() {
   const [videos, dispatch]=useReducer(videoReducer, videosDB)
 
 
- const theamContext=useContext(TheamContext)
- console.log({theamContext});
+//  const theamContext=useContext(TheamContext)
+//  console.log({theamContext});
  
 
 
@@ -45,12 +48,19 @@ function App() {
   
  }
   return (
-    <div className={`maindiv ${theamContext}`} onclick={()=>console.log("app hu")} >
+    <TheamContext.Provider  value={mode}>
+      <VideosContext.Provider value={videos}>
+        <VideoDispatchContext.Provider value={dispatch}>
+      <button onClick={()=>setmode(mode ==='dark' ? 'light':'dark' )} >butoo</button>
+    <div className={`maindiv ${mode}`} onclick={()=>console.log("app hu")} >
 
-    <Addvideo dispatch={dispatch}   editablevideo={editablevideo}></Addvideo>
-    <Videolist dispatch={dispatch} editvideo={editvideo} videos={videos}></Videolist>
+    <Addvideo    editablevideo={editablevideo}></Addvideo>
+    <Videolist  editvideo={editvideo} ></Videolist>
 
     </div>
+    </VideoDispatchContext.Provider>
+    </VideosContext.Provider>
+    </TheamContext.Provider>
   );
 }
 

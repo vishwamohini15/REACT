@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Video.css'
+import VideoDispatchContext from '../context/VideoDispatchCntx'
 
-const Video = ({title,channel="muskan",views,time,verifydd,id, children,dispatch,editvideo}) => {
+const Video = ({title,channel="muskan",views,time,verifydd,id, children,editvideo}) => {
   // let chanelJSX
   // if (verifyd) {
   // chanelJSX=<div className='channel'>{channel}✔💚❤❌</div>
@@ -10,6 +11,7 @@ const Video = ({title,channel="muskan",views,time,verifydd,id, children,dispatch
     
   // }
 
+  const dispatch=useContext(VideoDispatchContext)
   return (
      <div className="card">
       <button  className='close' onClick={()=>  dispatch({type: 'DELETE', payload:id})}>X</button>
