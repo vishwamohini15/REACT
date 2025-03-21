@@ -7,15 +7,17 @@ let initialstate={
      title:'',
      views:''
 }
-const Addvideo = ({addvideo,updatevideo, editablevideo}) => {
+const Addvideo = ({dispatch, editablevideo}) => {
      const [video, setvideo] = useState(initialstate)
 
      function handelsubmit(e){
           e.preventDefault()
           if (editablevideo) {
-               updatevideo(video)
+               dispatch({type: 'UPDATE', payload:video})
+
           }else{
-          addvideo(video)
+               dispatch({type: 'ADD', payload:video})
+
           }
           setvideo(initialstate)
      }

@@ -2,7 +2,7 @@ import React from 'react'
 import Video from './Video'
 import Playbutton from './Playbutton'
 
-const Videolist = ({videos, deletevideo,editvideo}) => {
+const Videolist = ({videos, dispatch,editvideo}) => {
   return (
      <div className='container' >
 
@@ -14,8 +14,8 @@ const Videolist = ({videos, deletevideo,editvideo}) => {
           time={video.time}
           channel={video.channel}
           verifydd={video.verifid} key={video.id}
-          deletevideo={deletevideo}
           editvideo={editvideo}
+          dispatch={dispatch}
           >
            
            <Playbutton

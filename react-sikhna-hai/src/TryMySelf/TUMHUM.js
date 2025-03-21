@@ -57,3 +57,24 @@ const TUMHUM = () => {
 }
 
 export default TUMHUM
+
+
+
+// ..........this is APP-JS Part.......
+// import React from 'react'
+// import TUMHUM from './TryMySelf/TUMHUM'
+
+// const App = () => {
+//   return (
+//     <div className='mainApp'>
+//       <TUMHUM/>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+
+
+
