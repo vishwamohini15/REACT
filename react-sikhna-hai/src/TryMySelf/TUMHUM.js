@@ -24,10 +24,13 @@ const TUMHUM = () => {
           })
           setAddData(updateditem);
      }
+     
 
      const remove=()=>{
           setAddData([])
      }
+
+
      
   return (
     <div className='todomain'>
