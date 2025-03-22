@@ -1,5 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
-import VideoDispatchContext from '../context/VideoDispatchCntx'
+import React, { useEffect, useRef, useState } from 'react'
+import useVideoDispatch from '../hooks/VideoDispatch'
+// import VideoDispatchContext from '../context/VideoDispatchCntx'
 
 let initialstate={
      time:"1 year ago",
@@ -10,7 +11,9 @@ let initialstate={
 }
 const Addvideo = ({ editablevideo}) => {
      const [video, setvideo] = useState(initialstate)
-const dispatch=useContext(VideoDispatchContext)
+     const dispatch=useVideoDispatch()
+     const inputRef=useRef(null)
+     
      function handelsubmit(e){
           e.preventDefault()
           if (editablevideo) {
@@ -35,12 +38,14 @@ const dispatch=useContext(VideoDispatchContext)
           setvideo(editablevideo)
                
           }
+
+          inputRef.current.style.color="red"
      }, [editablevideo])
      
 
   return (
      <form >
-          <input type="text" name='title' placeholder='title' className='inpuu' onChange={handelchange}  value={video.title}/>
+          <input ref={inputRef} type="text" name='title' placeholder='title' className='inpuu' onChange={handelchange}  value={video.title}/>
           <input type="text" name='views' placeholder='views' className='inpuu' onChange={handelchange} value={video.views}/>
           <button className='plybtn'  onClick={handelsubmit}>{editablevideo? 'edit' : 'add'}</button>
      </form>

@@ -1,4 +1,4 @@
-import { useContext, useReducer, useState } from 'react';
+import { useReducer, useState } from 'react';
 import './App.css';
 // import Playbutton from './components/Playbutton';
 // import Video from './components/Video';
@@ -8,6 +8,7 @@ import Videolist from './components/Videolist';
 import TheamContext from './context/Theamcontex';
 import VideosContext from './context/VideoContext';
 import VideoDispatchContext from './context/VideoDispatchCntx';
+import Counter from './components/Counter';
 // import { type } from '@testing-library/user-event/dist/type';
 
 
@@ -52,6 +53,7 @@ function App() {
       <VideosContext.Provider value={videos}>
         <VideoDispatchContext.Provider value={dispatch}>
       <button onClick={()=>setmode(mode ==='dark' ? 'light':'dark' )} >butoo</button>
+      <Counter/>
     <div className={`maindiv ${mode}`} onclick={()=>console.log("app hu")} >
 
     <Addvideo    editablevideo={editablevideo}></Addvideo>

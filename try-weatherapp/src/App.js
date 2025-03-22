@@ -1,5 +1,6 @@
 import React from 'react'
-import Anloo from './TryAnimeWthweth/Anloo'
+import Pasword from './passwordGenerator/Pasword'
+// import Anloo from './TryAnimeWthweth/Anloo'
 // import Temp from './component/Temp'
 // import TryTemp from './tryITmyOwn/TryTemp'
 
@@ -8,7 +9,9 @@ const App = () => {
     <div>
       {/* <Temp/> */}
       {/* <TryTemp/> */}
-      <Anloo/>
+      {/* <Anloo/> */}
+
+      <Pasword/>
     </div>
   )
 }
