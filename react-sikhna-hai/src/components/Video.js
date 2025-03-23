@@ -3,8 +3,18 @@ import './Video.css'
 import useVideoDispatch from '../hooks/VideoDispatch'
 
 const Video = ({title,channel="muskan",views,time,verifydd,id, children,editvideo}) => {
-
   const dispatch=useVideoDispatch()
+
+  // useEffect(() => {
+  //   let idx=setInterval(() => {
+  //     console.log("video playing", id);
+  //      }, 3000);
+
+  //      return()=>{
+  //       clearInterval(idx)
+  //      }
+  // }, [id])
+  
   return (
      <div className="card">
       <button  className='close' onClick={()=>  dispatch({type: 'DELETE', payload:id})}>X</button>

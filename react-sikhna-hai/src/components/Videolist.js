@@ -1,11 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Video from './Video'
 import Playbutton from './Playbutton'
-import useVideo from '../hooks/Videos'
+// import useVideo from '../hooks/Videos'
+import axios from 'axios'
 
 const Videolist = ({editvideo}) => {
-   const videos=useVideo()
+const url='https://dummyjson.com/products'
+
+// const url="https://my.api.mockaroo.com/video.json?key=ea9e44d0"
+
+
+   // const videos=useVideo()
+
+const [videos, setvideos]=useState([])
+   async function handelclick(){
+   const res= await axios.get(url)
+      console.log("kl", res.data.products);
+      setvideos(res.data.products)
+   }
+
+   useEffect(() => {
+    handelclick()
+   }, [])
+   
   return (
+   <>
      <div className='container' >
 
      {videos.map((video)=>{
@@ -28,6 +47,8 @@ const Videolist = ({editvideo}) => {
      })}
      
    </div>
+   <button  onClick={handelclick}>get videos</button>
+   </>
   )
 }
 
