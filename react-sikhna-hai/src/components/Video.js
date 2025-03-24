@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { memo } from 'react'
 import './Video.css'
 import useVideoDispatch from '../hooks/VideoDispatch'
 
-const Video = ({title,channel="muskan",views,time,verifydd,id, children,editvideo}) => {
+const Video=memo (function Video({title,channel="muskan",views,time,verifydd,id, children,editvideo}) {
   const dispatch=useVideoDispatch()
 
   // useEffect(() => {
@@ -38,6 +38,6 @@ const Video = ({title,channel="muskan",views,time,verifydd,id, children,editvide
 </div>
     </div>
   )
-}
+})
 
 export default Video

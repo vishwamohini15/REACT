@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import Video from './Video'
 import Playbutton from './Playbutton'
-// import useVideo from '../hooks/Videos'
+import useVideo from '../hooks/Videos'
 import axios from 'axios'
+import useVideoDispatch from '../hooks/VideoDispatch'
 
 const Videolist = ({editvideo}) => {
 const url='https://dummyjson.com/products'
@@ -10,19 +11,30 @@ const url='https://dummyjson.com/products'
 // const url="https://my.api.mockaroo.com/video.json?key=ea9e44d0"
 
 
-   // const videos=useVideo()
-
-const [videos, setvideos]=useState([])
-   async function handelclick(){
-   const res= await axios.get(url)
-      console.log("kl", res.data.products);
-      setvideos(res.data.products)
-   }
+   const videos=useVideo()
+const dispatch=useVideoDispatch()
+   // async function handelclick(){
+   // const res= await axios.get(url)
+   //    console.log("kl", res.data.products);
+   //    dispatch({type:'LOAD', payload:res.data.products})
+   // }
 
    useEffect(() => {
-    handelclick()
-   }, [])
+      async function getvideo(){
+         const res= await axios.get(url)
+            console.log("kl", res.data.products);
+            dispatch({type:'LOAD', payload:res.data.products})
+         }
+    getvideo()
+   }, [dispatch])
    
+   const play=useCallback(()=>console.log("playing-hua"),[])
+   const paused=useCallback(()=>console.log("paused-hua"),[])
+const memobutton=useMemo(()=>(<Playbutton
+onclick={play}
+onpaused={paused}>
+playyyy
+</Playbutton>),[play,paused])
   return (
    <>
      <div className='container' >
@@ -38,16 +50,13 @@ const [videos, setvideos]=useState([])
           editvideo={editvideo}
           >
            
-           <Playbutton
-              onclick={()=>console.log("playing-hua", video.title)}
-             onpaused={()=>console.log("paused-hua", video.title)}
-             >{video.title}</Playbutton>
+         {memobutton} 
           </Video>
         )
      })}
      
    </div>
-   <button  onClick={handelclick}>get videos</button>
+   {/* <button  onClick={handelclick}>get videos</button> */}
    </>
   )
 }

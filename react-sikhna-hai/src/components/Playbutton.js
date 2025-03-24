@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, memo} from 'react'
 import TheamContext from '../context/Theamcontex'
 
-const Playbutton = ({message, children, onclick, onpaused}) => {
+const Playbutton= memo(function Playbutton ({message, children, onclick, onpaused}){
      const theme=useContext(TheamContext)
 const [playing, setPlaying] = useState(false)
      const handelclick=(e)=>{
@@ -21,6 +21,6 @@ const [playing, setPlaying] = useState(false)
       }>{children} {playing ?"💹": "🛑"}</button>
     </div>
   )
-}
+})
 
 export default Playbutton
