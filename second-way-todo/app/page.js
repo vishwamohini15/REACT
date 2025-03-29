@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react'
-import Todo from './TodoWithEdit/Todo';
+// import Todo from '/./TodoWithEdit/Todo';
+import SolanaApp from './hello/Solona';
 
 
 const page = () => {
@@ -72,7 +73,8 @@ if (mainTask.length>0) {
 
 return(
   <div className='h-screen max-w-full bg-green-500 p-10'>
-  <Todo/>
+  {/* <Todo/> */}
+  <SolanaApp/>
 
   </div>
 )
