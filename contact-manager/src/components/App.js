@@ -3,24 +3,36 @@ import Addccontact from './Addccontact';
 import './App.css';
 import ContactList from './ContactList';
 import Header from './Header';
-// import { uuid } from 'uuidv4';
+
+
+let sno;
 
 function App() {
-  const idoo=1;
   const [contacts, setContacts] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false); 
   
   const addContactHandler = (contact) => {
-    console.log(contact);
-    
-    setContacts([...contacts, {id:idoo+1 , ...contact}]);
+  if (contacts.length===0) {
+    sno=0;
+  }else{
+     sno=contacts.length+1;
+  }
+  const mytodo={
+    sno:sno,
+    name:contact.name,
+    email:contact.email
+  }
+  
+    setContacts([...contacts, mytodo]);
   };
 
-  const removecontacts=(id)=>{
-    const newcontctlist=contacts.filter((contact)=>{
-      return contact.id !==id;
-    })
-    setContacts(newcontctlist)
+
+  const removecontacts=(sno)=>{
+    console.log(contacts);
+    
+    const newContactList = contacts.filter((contact) => contact.sno !== sno);
+    setContacts(newContactList);
+
   }
   
   useEffect(() => {
@@ -32,12 +44,11 @@ function App() {
   useEffect(() => {
     if (isLoaded) {
       localStorage.setItem("hlo", JSON.stringify(contacts));
-      console.log(contacts);
+      // console.log(contacts);
     }
   }, [contacts, isLoaded]);
   
   
-  // localStorage.clear()
   return (
     <div className='ui container'>
      <Header/>

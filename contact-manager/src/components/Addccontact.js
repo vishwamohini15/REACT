@@ -10,7 +10,7 @@ const Addccontact = ({addContactHandler}) => {
           alert("please fill all input form")
           return;
      }
-     console.log(name,email);
+    //  console.log(name,email);
      addContactHandler({name,email})
      setname("")
      setEmail("")

@@ -2,7 +2,7 @@ import React from 'react'
 import user from "../images/user.png"
 
 const ContactCard = ({contact,clickHandler}) => {
-     const {id,name, email}=contact
+     const {sno,name, email}=contact
   return (
      <div className="item ">
           <img className="ui avatar image" src={user} alt='user'/>
@@ -12,7 +12,7 @@ const ContactCard = ({contact,clickHandler}) => {
      </div>
      <div  style={{display:'flex', justifyContent:'flex-end', alignItems:'center', marginTop:'-9px'}}>
      <i className='trash alternate outline icon' style={{color:'red', fontSize:'22px'}}
-     onClick={()=>clickHandler(id)}
+     onClick={()=>clickHandler(sno)}
      ></i>
      </div>
 </div>
