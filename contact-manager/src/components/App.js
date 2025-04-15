@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Addccontact from './Addccontact';
 import './App.css';
 import ContactList from './ContactList';
 import Header from './Header';
-
+// import { Route } from 'react-router-dom';
 
 let sno;
 
@@ -51,9 +52,20 @@ function App() {
   
   return (
     <div className='ui container'>
-     <Header/>
-     <Addccontact  addContactHandler={addContactHandler}/>
-     <ContactList  contacts={contacts} getContactid={removecontacts}/>
+      <Router>
+  <Header />
+
+  <Routes>
+    <Route path="/" element={
+      <ContactList contacts={contacts} getContactid={removecontacts} />
+    } />
+    
+    <Route path="/add" element={
+      <Addccontact addContactHandler={addContactHandler} />
+    } />
+  </Routes>
+</Router>
+
     </div>
   );
 }

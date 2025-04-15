@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
+import { useNavigate } from "react-router-dom";
+
 
 const Addccontact = ({addContactHandler}) => {
      const [name, setname] = useState([])
      const [email, setEmail] = useState([])
+     const navigate = useNavigate();
+
 
    const add=(e)=>{
      e.preventDefault();
@@ -14,6 +18,10 @@ const Addccontact = ({addContactHandler}) => {
      addContactHandler({name,email})
      setname("")
      setEmail("")
+
+     navigate("/");
+
+     
    }
 
 
