@@ -4,18 +4,18 @@ import ContactCard from './ContactCard'
 const ContactList = ({contacts,getContactid}) => {
     //  console.log(contacts);
      
-     const deleteContactHandler=(sno)=>{
-      getContactid(sno)
+     const deleteContactHandler=(id)=>{
+      getContactid(id)
      }
 
     //  const contacts=[{
-    //   sno:0,
+    //   id:0,
     //   "name":"muskan",
     //   "email":"hello@gmil.com"
     //  }]
-     const renderContactslist=contacts.map((contact, sno)=>{
+     const renderContactslist=contacts.map((contact, id)=>{
           return(
-              <ContactCard contact={contact} key={sno} clickHandler={deleteContactHandler }/>
+              <ContactCard contact={contact} key={id} clickHandler={deleteContactHandler }/>
           )
      })
   return (

@@ -1,0 +1,19 @@
+{
+  "contacts": [
+    {
+      "id": "0",
+      "name": "vishwamohini",
+      "email": "vish@gmil.c"
+    },
+    {
+      "id": "1",
+      "name": "muskan",
+      "email": "myself"
+    },
+    {
+      "id": "2",
+      "name": "rani",
+      "email": "kailash"
+    }
+  ]
+}

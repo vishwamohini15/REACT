@@ -2,54 +2,73 @@ import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Addccontact from './Addccontact';
 import './App.css';
+import api from '../api/Contacts'
 import ContactList from './ContactList';
 import Header from './Header';
 import ContactDetail from './ContactDetail';
 // import { Route } from 'react-router-dom';
 
-let sno;
+let id;
 
 function App() {
   const [contacts, setContacts] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false); 
   
-  const addContactHandler = (contact) => {
+//RetriveContacts
+const RetrieveContacts= async ()=>{
+  const response= await api.get("/contacts") 
+  return response.data;
+}
+
+
+  const addContactHandler =async (contact) => {
   if (contacts.length===0) {
-    sno=0;
+    id=0;
   }else{
-     sno=Math.floor(Math.random()*contacts.length+1)
-     console.log("helo sno=",sno);
+     id=Math.floor(Math.random()*contacts.length+1)
+     console.log("helo id=",id);
      
   }
   const mytodo={
-    sno:sno,
+    id:id,
     name:contact.name,
     email:contact.email
   }
   
-    setContacts([...contacts, mytodo]);
+    const response=await api.post("/contacts", mytodo)
+    console.log(response);
+    
+    setContacts([...contacts, response.data]);
   };
 
 
-  const removecontacts=(sno)=>{
-    console.log(contacts);
-    
-    const newContactList = contacts.filter((contact) => contact.sno !== sno);
+  const removecontacts=async(id)=>{
+    // console.log(contacts);
+    console.log("Deleting contact with id:", id); 
+    await api.delete(`/contacts/${id}`);
+    const newContactList = contacts.filter((contact) => contact.id !== id);
     setContacts(newContactList);
 
   }
   
   useEffect(() => {
-    const retriveContacts = localStorage.getItem("hlo");
-    if (retriveContacts) setContacts(JSON.parse(retriveContacts));
-    setIsLoaded(true); // <-- mark as loaded
+    // const retriveContacts = localStorage.getItem("hlo");
+    // if (retriveContacts) setContacts(JSON.parse(retriveContacts));
+    // setIsLoaded(true); // <-- mark as loaded
+
+    const getAllContacts= async ()=>{
+      const allContacts =await RetrieveContacts()
+      if(allContacts) setContacts(allContacts)
+        setIsLoaded(true);
+    }
+    getAllContacts()
   }, []);
   
   useEffect(() => {
-    if (isLoaded) {
-      localStorage.setItem("hlo", JSON.stringify(contacts));
-      // console.log(contacts);
-    }
+    // if (isLoaded) {
+    //   localStorage.setItem("hlo", JSON.stringify(contacts));
+    //   // console.log(contacts);
+    // }
   }, [contacts, isLoaded]);
   
   
@@ -67,7 +86,7 @@ function App() {
       <Addccontact addContactHandler={addContactHandler} />
     } />
 
-    <Route path='/contact/:sno' Component={ContactDetail}/>
+    <Route path='/contact/:id' Component={ContactDetail}/>
   </Routes>
 </Router>
 
