@@ -4,6 +4,7 @@ import Addccontact from './Addccontact';
 import './App.css';
 import ContactList from './ContactList';
 import Header from './Header';
+import ContactDetail from './ContactDetail';
 // import { Route } from 'react-router-dom';
 
 let sno;
@@ -16,7 +17,9 @@ function App() {
   if (contacts.length===0) {
     sno=0;
   }else{
-     sno=contacts.length+1;
+     sno=Math.floor(Math.random()*contacts.length+1)
+     console.log("helo sno=",sno);
+     
   }
   const mytodo={
     sno:sno,
@@ -63,6 +66,8 @@ function App() {
     <Route path="/add" element={
       <Addccontact addContactHandler={addContactHandler} />
     } />
+
+    <Route path='/contact/:sno' Component={ContactDetail}/>
   </Routes>
 </Router>
 
