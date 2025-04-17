@@ -3,17 +3,17 @@
     {
       "id": "0",
       "name": "vishwamohini",
-      "email": "vish@gmil.c"
+      "email": "vishwaMohini@gmil.c"
     },
     {
-      "id": "1",
+      "id": 1,
       "name": "muskan",
-      "email": "myself"
+      "email": "khushi"
     },
     {
-      "id": "2",
-      "name": "rani",
-      "email": "kailash"
+      "id": 2,
+      "name": "nh",
+      "email": "myself"
     }
   ]
 }

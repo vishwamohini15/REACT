@@ -6,6 +6,7 @@ import api from '../api/Contacts'
 import ContactList from './ContactList';
 import Header from './Header';
 import ContactDetail from './ContactDetail';
+import EditContact from './EditContact';
 // import { Route } from 'react-router-dom';
 
 let id;
@@ -41,6 +42,16 @@ const RetrieveContacts= async ()=>{
     setContacts([...contacts, response.data]);
   };
 
+
+  const UpdateContactHandler = async (contact) => {
+    const response = await api.put(`/contacts/${contact.id}`, contact);
+    const updatedContact = response.data;
+  
+    setContacts((prevContacts) =>
+      prevContacts.map((c) => (c.id === updatedContact.id ? updatedContact : c))
+    );
+  };
+  
 
   const removecontacts=async(id)=>{
     // console.log(contacts);
@@ -85,6 +96,12 @@ const RetrieveContacts= async ()=>{
     <Route path="/add" element={
       <Addccontact addContactHandler={addContactHandler} />
     } />
+
+      <Route path="/edit" element={
+      <EditContact UpdateContactHandler={UpdateContactHandler} />
+      
+    } />
+
 
     <Route path='/contact/:id' Component={ContactDetail}/>
   </Routes>

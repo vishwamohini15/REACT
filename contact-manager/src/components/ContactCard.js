@@ -32,7 +32,7 @@ const ContactCard = ({ contact, clickHandler }) => {
           <i
           className="edit alternate outline icon"
           style={{ color: "blue", fontSize: "22px" }}
-          onClick={() => clickHandler(id)}
+          
         ></i>
       </Link>
       </div>
